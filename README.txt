@@ -1,3 +1,19 @@
+
+objectId JS implementation
+------
+
+Forked from: https://github.com/justaprogrammer/ObjectId.js
+
+In this fork, cookie modification id removed, and made more OOP in JavaScript.
+
+```coffee
+objectId() # returns MongoID
+new objectId() # returns an Object of MongoID
+new objectId().toString() # returns MongoID
+```
+
+### License
+
 This is an implementation of ObjectId in pure javascript. 
 MachineId is persistant across a single domain via html5
 LocalStorage with a fallback to cookies. Something like 

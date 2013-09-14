@@ -14,7 +14,7 @@
  * and converts between that format and the standard 24 character representation.
 */
 var ObjectId = (function () {
-    var increment = 0;
+    var increment = Math.floor(Math.random() * 0xffffff);
     var pid = Math.floor(Math.random() * (32767));
     var machine = Math.floor(Math.random() * (16777216));
 
@@ -25,19 +25,6 @@ var ObjectId = (function () {
         }
         // Just always stick the value in.
         localStorage['mongoMachineId'] = machine;
-        document.cookie = 'mongoMachineId=' + machine + ';expires=Tue, 19 Jan 2038 05:00:00 GMT'
-    }
-    else {
-        var cookieList = document.cookie.split('; ');
-        for (var i in cookieList) {
-            var cookie = cookieList[i].split('=');
-            if (cookie[0] == 'mongoMachineId' && cookie[1] >= 0 && cookie[1] <= 16777215) {
-                machine = cookie[1];
-                break;
-            }
-        }
-        document.cookie = 'mongoMachineId=' + machine + ';expires=Tue, 19 Jan 2038 05:00:00 GMT';
-
     }
 
     function ObjId() {
