@@ -16,15 +16,6 @@ var ObjectId = (function () {
   var pid = Math.floor(Math.random() * (32767));
   var machine = Math.floor(Math.random() * (16777216));
 
-  if (typeof (localStorage) != 'undefined') {
-    var mongoMachineId = parseInt(localStorage['mongoMachineId'], 10);
-    if (mongoMachineId >= 0 && mongoMachineId <= 16777215) {
-      machine = Math.floor(localStorage['mongoMachineId']);
-    }
-    // Just always stick the value in.
-    localStorage['mongoMachineId'] = machine;
-  }
-
   function ObjId() {
     if (!(this instanceof ObjectId)) {
       return new ObjectId(arguments[0], arguments[1], arguments[2], arguments[3]).toString();
